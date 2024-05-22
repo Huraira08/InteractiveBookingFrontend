@@ -35,14 +35,19 @@ export class BookingsPageComponent implements OnInit {
 
   async ngOnInit() {
     this.bookings = await this.bookingService.getAllBooking();
-    this.bookingUpdateService.startConnection().subscribe(()=>{
+    this.bookingUpdateService.startConnection()
+    .then(()=>{
+      console.log("Connection established with booking update hub");
       this.bookingUpdateService.receiveUpdate().subscribe(update=>{
-        console.log(update)
-        this.bookingService.getAllBooking().then(bookings=>{
-          this.bookings = bookings;
-          this.dateRange=[]
-        })
-      })
+              console.log(update)
+              this.bookingService.getAllBooking().then(bookings=>{
+                this.bookings = bookings;
+                this.dateRange=[]
+              })
+            })
+    })
+    .catch((error)=>{
+      console.error("Error connecting to booking update hub: ", error);
     })
   }
 

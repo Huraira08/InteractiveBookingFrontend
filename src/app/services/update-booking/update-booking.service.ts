@@ -15,18 +15,7 @@ export class UpdateBookingService {
   }
 
   startConnection(){
-    return new Observable<void>((observer)=>{
-      this.hubConntection.start()
-      .then(()=>{
-        console.log("Connection established with booking update hub");
-        observer.next()
-        observer.complete()
-      })
-      .catch((error)=>{
-        console.error("Error connecting to booking update hub: ", error);
-        observer.error(error)
-      })
-    })
+    return this.hubConntection.start()
   }
 
   receiveUpdate(): Observable<any>{
