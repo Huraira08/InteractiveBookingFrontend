@@ -1,0 +1,27 @@
+<form (submit)="submitBooking()" [formGroup]="bookingForm">
+    <nz-form-item>
+        <nz-form-control nzErrorTip="Please enter start date">
+          <nz-input-group>
+            <nz-date-picker class="input" formControlName="startDate" nzFormat="dd/MM/YYYY" nzPlaceHolder="Start Date"></nz-date-picker>
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Please enter end date">
+            <nz-input-group>
+                <nz-date-picker class="input" formControlName="endDate" nzFormat="dd/MM/YYYY" nzPlaceHolder="End Date"></nz-date-picker>
+            </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Please input price">
+          <nz-input-group>
+            <input type="number" nz-input formControlName="price" placeholder="Price" />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <!-- submit button -->
+      <div nz-flex nzJustify="end"><button nz-button [nzType]="'primary'">Add booking</button></div>
+</form>
+
+<!-- <nz-date-picker [nzFormat]="dateFormat"></nz-date-picker> -->

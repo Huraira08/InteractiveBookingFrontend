@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="date-picker" nz-flex nzAlign="center" nzJustify="space-between">
+        <div nz-flex nzAlign="center">
+            <p class="date-label">Select Date range</p>
+        <nz-range-picker [(ngModel)]="dateRange" nzFormat="dd/MM/YYYY"
+     (nzOnCalendarChange)="searchBookings($event)"
+     ></nz-range-picker>
+        </div>
+        <button nz-button nzType="primary" (click)="showAddBookingModal()">Add Booking</button>
+    </div>
+
+    <ag-grid-angular
+    class="ag-theme-quartz" 
+    style="height: 500px"
+    [rowData]="bookings" [columnDefs]="colDefs" />
+</div>
